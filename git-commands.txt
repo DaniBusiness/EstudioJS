@@ -1,0 +1,40 @@
+Cuando hayas creado un nuevo repositorio en GitHub, asegúrate de que sea público.
+Alternativamente, lo puedes hacer privado, y darme acceso al repositorio.
+Crea una carpeta local en tu compu.
+En esa carpeta, vas a abrir una terminal (normalmente se puede hacer clic derecho
+dentro de la carpeta y abrir ahí una terminal) y a escribir los siguientes comandos:
+
+git init
+git commit -m "first commit"
+git branch -M main
+git remote add origin "[el link de tu repositorio]"
+git push -u origin main
+
+Esto conectará tu repositorio local con el de GitHub.
+
+Lo ideal es que tanto tu carpeta como la mía estén en el mismo repositorio.
+Para hacerlo, tenemos que crear ramas. Pero para comenzar, vamos a saltar ese paso,
+y simplemente vamos a tener una carpeta en la compu para lo que yo vaya subiendo
+y otra carpeta para que lo que vayas haciendo, y cada uno tendrá su propio repositorio.
+
+Debes crear una carpeta para sincronizar con mi repositorio.
+Mi sugerencia es que tus carpetas tengan esta estructura:
+
+estudio-JavaScript (esta es una carpeta que creas)
+    > daniel 
+        Esta carpeta contendrá lo que vayas haciendo. Estará conectada con tu cuenta de GitHub.
+        Es la carpeta que creaste y donde ejecutaste todos los comandos que aparecen más arriba.
+    > erik
+        Esta carpeta estará conectada con mi repositorio de GitHub.
+
+Debes crear carpeta "erik" (recuerda, por fuerta de tu carpeta conectada a GitHub).
+Al crearla, abre una terminal y escribe los siguientes comandos:
+
+git init
+git clone "https://github.com/ejalvarezg/javascript-intro-daniel.git"
+
+Y listo, esperas a que descargue todo.
+Cada vez que haya algún cambio, te avisaré y podrás actualizar tu carpeta local "erik" con estos comandos:
+
+cd javascript-intro-daniel (esto, en caso de que estés en la carpeta "erik")
+git pull

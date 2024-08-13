@@ -18,10 +18,12 @@ function addSomeText() {
     // document.body.innerHTML += "<br><p>Function executed!</p>";
 }
 
+function ejecutar() {
 var x = 2;
 // show a message in the body of the html document
 document.body.innerHTML += "<b>JavaScript code executed. The value of the variable x is: " + x + "</b>";
 // also print a message in the devtool console
+}
 
 /*
 	1. changeTtitleCSSStyle es una función
