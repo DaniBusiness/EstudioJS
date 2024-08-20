@@ -90,3 +90,40 @@ function armarFrase2() {
 /* Con la function aggregacion() estamos dandole una condicion si es una palabra o un numero + darle un espacio. 
 La function suma3 llama a la function agregacion y agragas parametros como si fueran numeros. 
 La function armarFrase2() llama a la function agregacion y agragas parametros como si fueran strings. */
+
+function aggregacion2(operacion2, arreglo2) {  
+    var valorInicial;
+    if (typeof(operacion2) == "string") {
+        valorInicial = "";
+    }
+    else if (typeof(operacion2) == "number") {
+        valorInicial = 0;
+    }
+    // console.log(arguments);
+    for (let i=0;i < arreglo2.length; i++) {
+        // console.log(arguments[i]);
+        
+        if (typeof(operacion2)== "string") {
+            valorInicial +=  + " ";
+        }
+        else if (typeof(operacion2) == "number") {
+            valorInicial += arreglo2[i];
+        }
+    }
+    return valorInicial.trim(); // Eliminar el espacio extra al final en caso de cadenas  
+    
+};
+
+function suma4() {  
+    // Convertir arguments a un array para pasarlo a aggregacion2
+    var argsArray = Array.prototype.slice.call(arguments);
+    var resultado = aggregacion2(0, argsArray);
+    return resultado;
+};
+
+function armarFrase3() {  
+    // Convertir arguments a un array para pasarlo a aggregacion2
+    var argsArray = Array.prototype.slice.call(arguments);
+    var resultado = aggregacion2("Pippo", argsArray);
+    return resultado;
+};
