@@ -1,0 +1,1 @@
+// Hacer un código que tome los elementos de un array de números, y me devuelva el más chico y el más grande de esos números

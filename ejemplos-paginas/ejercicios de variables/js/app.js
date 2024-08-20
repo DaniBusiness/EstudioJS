@@ -150,8 +150,46 @@ function aggFinal() {
         }
     }
 
-
     if (operacion == 'sumar') {
+        // sumar
+        var suma = 0;
+        for (let i=0; i< arguments.length; i++) {
+            suma += arguments[i];
+        }
+        return suma;
+    } else {
+        // concatenar
+        var texto = '';
+        for (let i=0; i< arguments.length; i++) {
+            texto += arguments[i] + ' ';
+        }
+        return texto.trim(); // .trim() quita el último espacio.
+    }
+};
+
+
+function clase5() {
+    var operacion = 'sumar';
+    // Ejemplo de array: [1,3,5,'y',10] => arguments.length = 4; entonces i va a ser 0, 1, 2, 3... y entonces arguments[0] = 1, arguments[1] = 3
+
+    // La clave está acá: Recorre todo el array, y si encuentra AL MENOS UN STRING, entonces la operación es "concatenar".
+    // Si son todos números, la operación es "sumar".
+    for (let i=0; i<arguments.length; i++) {
+        if (typeof(arguments[i]) == 'string') {
+            // Tiene que concatenar
+            operacion = 'concatenar';
+        }
+    }
+
+    console.log('Total de arguments:',arguments.length);
+    console.log('operacion:', typeof(operacion));
+    var prueba = (operacion == 'sumar');
+    console.log('prueba:', prueba);
+
+    prueba ? console.log('Es una suma') : console.log('Es un texto que se concatena');
+
+
+    if (prueba) {
         // sumar
         var suma = 0;
         for (let i=0; i< arguments.length; i++) {
