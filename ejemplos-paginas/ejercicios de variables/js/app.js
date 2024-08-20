@@ -20,8 +20,8 @@ function suma(s1,s2) {
 // Arguments solo se puede utilizar dentro de las functiones. 
 
 function suma2() {  
-    var sum = 13;
-    // console.log(arguments);
+    var sum = 0;
+    // FOR es para recorrer el array
     for (let i=0;i < arguments.length; i++) {
         // console.log(arguments[i]);
         sum += arguments[i];
@@ -126,4 +126,44 @@ function armarFrase3() {
     var argsArray = Array.prototype.slice.call(arguments);
     var resultado = aggregacion2("Pippo", argsArray);
     return resultado;
+};
+
+
+/*
+    CORRECCIÓN:
+
+        Modificar la función para que pueda sumar si son SOLAMENTE números.
+        Si hay al menos un string, entonces los debe concatenar. concat(); +
+
+*/
+
+function aggFinal() {
+    var operacion = 'sumar';
+    // Ejemplo de array: [1,3,5,'y',10] => arguments.length = 4; entonces i va a ser 0, 1, 2, 3... y entonces arguments[0] = 1, arguments[1] = 3
+
+    // La clave está acá: Recorre todo el array, y si encuentra AL MENOS UN STRING, entonces la operación es "concatenar".
+    // Si son todos números, la operación es "sumar".
+    for (let i=0; i<arguments.length; i++) {
+        if (typeof(arguments[i]) == 'string') {
+            // Tiene que concatenar
+            operacion = 'concatenar';
+        }
+    }
+
+
+    if (operacion == 'sumar') {
+        // sumar
+        var suma = 0;
+        for (let i=0; i< arguments.length; i++) {
+            suma += arguments[i];
+        }
+        return suma;
+    } else {
+        // concatenar
+        var texto = '';
+        for (let i=0; i< arguments.length; i++) {
+            texto += arguments[i] + ' ';
+        }
+        return texto.trim(); // .trim() quita el último espacio.
+    }
 };
