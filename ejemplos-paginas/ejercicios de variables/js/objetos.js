@@ -169,3 +169,33 @@ var personas = [];
 for (let i=0; i<database.length; i++) {
     personas[i] = new Person(database[i].first, database[i].last, database[i].age);
 }
+
+
+
+
+// Ejercicio Daniel Objeto Carro
+
+function carroFullInfo() {
+  return this.brand + ", " + this.model + ", " + this.matricula;
+}
+
+function Carro(_brand, _model, _matricula) {
+  this.brand = _brand;
+  this.model = _model;
+  this.matricula = _matricula;
+  this.fullInfo = carroFullInfo;
+}
+
+var merce = new Carro("Mercedes", "Clase A", 1234567890);
+
+var base = [
+    {brand: 'BMW', model: 'X3', matricula: 9758935957},
+    {brand: 'Lamborghini', model: 'Murcielago', matricula: 32495840857},
+    {brand: 'Ferrari', model: 'F40', matricula: 25892385950}
+]
+
+var carros = [];
+
+for (let j=0, j<base.length, j++) {
+  carros[j] = new Carro(base[j].brand, base[j].model, base[j].matricula);
+}
