@@ -196,6 +196,27 @@ var base = [
 
 var carros = [];
 
-for (let j=0, j<base.length, j++) {
+for (let j=0; j<base.length; j++) {
   carros[j] = new Carro(base[j].brand, base[j].model, base[j].matricula);
 }
+
+/*
+Pruebas en consola:
+
+  merce; // output: Carro {brand: 'Mercedes', model: 'Clase A', matricula: 1234567890, fullInfo: ƒ}
+  merce.brand // output: 'Mercedes'
+  merce.matricula // output: 1234567890
+  merce['matricula'] // output: 1234567890
+
+  carros // output [Carro, Carro, Carro]
+  carros[0] // Carro {brand: 'BMW', model: 'X3', matricula: 9758935957, fullInfo: ƒ}
+  carros[0].model // output: 'X3'
+*/
+
+/*
+  Leer información sobre estos objetos por defecto:
+
+    window
+    navigator
+    document
+*/
