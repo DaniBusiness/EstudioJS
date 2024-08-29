@@ -30,7 +30,7 @@ p3.eyeColor = "blue";
 const p4 = new Object();
 
 // añadir sus propiedades
-p4.firstName = "John";
+p4['firstName'] = "John";
 p4.lastName = "Doe";
 p4.age = 50;
 p4.eyeColor = "blue";
@@ -98,7 +98,7 @@ const p5 = {
     Si hacemos algo parecido con los objetos, el valor del objeto original también se verá modificado:
 */
 
-var p6 = p1 // Ahora p5 y p1 son la misma persona. Probar cambiar el nombre de p5 en consola, y ver qué sucede con p1
+var p6 = p1 // Ahora p5 y p1 son la misma persona. Probar cambiar el nombre de p6 en consola, y ver qué sucede con p1
 
 var b1 = p1 == p2 // false
 var b2 = p1 == p6 // true
@@ -205,10 +205,11 @@ const person = {
 
     1. - assign()
     2. - create()
-    3. - keys()
+    3. - keys() // para mostrar los nombres de las propiedades en un arreglo
     4. - toString()
     5. - valueOf()
-    6. - values()
+    6. - values() // para mostrar los valores de las propiedades en un arreglo
+    7. - entries() // para mostrar los pares [clave, valor] en un arreglo
 */
 
 /*
@@ -228,7 +229,7 @@ const person = {
 */
 
 function display() {
-    document.getElementById("demo").innerHTML = persona;
+    document.getElementById("demo").innerHTML = 'persona: ' + persona;
 }
 
 /*
@@ -277,8 +278,21 @@ function d1() {
     document.getElementById("demo").innerHTML = persona.lastName + ", " + persona.firstName + ", " + persona.age;
 }
 
+/*
+    for (let i=0 ; i < Object.keys(person).length ; i++) {// Código}
+    for (let x in persona) {} // Se usa en objetos
+    for (let x of Object.keys(person)) {} // Se usa en arreglos
+*/
+
 function d2() {
     let text = "";
+
+    // Usando el ciclo for convencional
+    /* for (let i=0; i<Object.keys(persona).length; i++) {
+        text += Object.values(persona)[i] + " " 
+        }
+    */
+
     for (let x in persona) {
         text += persona[x] + " ";
     };
@@ -293,8 +307,18 @@ function d3_values() {
 
 function d3_entries() {
     let text = "";
-    for (let [prop, value] of Object.entries(persona)) {
-        text += prop + ": " + value + "<br>";
+    
+    // p es un arreglo de pares clave: valor
+    /* 
+    for (let p of Object.entries(persona)) {
+        text += p + "<br>";
+    }
+    */
+
+    for (let [propiedad, valor] of Object.entries(persona)) {
+        console.log('propiedad: ' + propiedad);
+        console.log('valor: ' + valor);
+        text += propiedad + ": " + valor + "<br>";
     }
     document.getElementById("demo").innerHTML = text;
 }
@@ -317,17 +341,19 @@ function d4() {
         Por convención y sugerencia, se nombra a las funciones constructoras con mayúscula inicial
 */
 
-function Auto(brand, model, weigth, year) {
-    this.brand = brand;
-    this.model = model;
-    this.weigth = weigth;
-    this.year = year;
+function Auto(_brand, _model, _weigth, _year) {
+    this.brand = _brand;
+    this.model = _model;
+    this.weigth = _weigth;
+    this.year = _year;
 
     // Método de la función constructora
     this.start = function () {
         return this.model + ' está encendido y listo para conducir.'
     }
 }
+
+const sedan = new Auto('Mercedes Benz', 'Sedan Class A', '850 kg', 2019);
 
 /*
     // Las funciones constructoras son idénticas a las clases en otros lenguajes de programación:
@@ -339,6 +365,10 @@ function Auto(brand, model, weigth, year) {
         this.model = model;
         this.weigth = weigth;
         this.year = year;
+
+        this.start = function () {
+        return this.model + ' está encendido y listo para conducir.'
+        }
     }
     }
 
@@ -348,15 +378,22 @@ function Auto(brand, model, weigth, year) {
 
 /*
     De un modo más estricto, this no tiene valor.
-    Su valor será el del objeto que se cree.
+    Su valor será0 el del objeto que se cree.
 
     Ahora es posible crear nuevos objetos con la expresión new Auto()
 */
 
-const sedan = new Auto('Mercedes Benz', 'Sedan Class A', '850 kg', 2019);
 const amarok = new Auto('Volkswagen', 'Amarok', '1150 kg', 2022);
 const ds3 = new Auto('Citröen', 'DS3', '750 kg', 2014);
 const sprinter = new Auto('Mercedes Benz', 'eSprinter', '3500 kg', 2024);
+
+Auto.prototype.type = 'electric';
+Auto.prototype.drive = function () {
+    return this.model + ' está avanzando.';
+}
+Auto.prototype.changeType = function (_type) {
+    this.type = _type;
+}
 
 /*
     NOTA: si se agregan nuevas propiedades o métodos a estos objetos ya creados,
