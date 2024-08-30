@@ -8,11 +8,73 @@
         1.2. Crear una función que convierta todos los elementos del array en mayúsuculas (toUpperCase)
 */
 
+const dias = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+function convertirMayusculas(dias) {
+    /* for (let i=0; i<dias.length; i++) {
+        dias[i] = dias[i].toUpperCase();
+    }
+    return dias;    */
+   const days = [];
+   for (let dia of dias) {
+    days.push(dia.toUpperCase());
+   }
+    return days; 
+}
+console.log(convertirMayusculas(dias));
+
+function convertirMinusculas(dias) {
+    for (let i=0; i<dias.length; i++) {
+        dias[i] = dias[i].toLowerCase();
+    }
+    return dias;
+}
+console.log(convertirMinusculas(dias));
+
+
+
 /*
     2. Crear un array con 10 números distintos, enteros.
         2.1. A partir del array, crear dos más: uno tendrá todos los elementos impares, el otro los pares.
         2.2. Crear una función que sume todos los números del array que sean divisibles por 3.
 */
+
+const numeros = [1,2,3,4,5,6,7,8,9,10];
+//const impares = [1,3,5,7,9];
+//const pares = [2,4,6,8,10];
+
+function suma(numeros) {
+    var valorSuma = 0;
+    for (let i=0; i<numeros.length; i++) {
+        if (numeros[i] % 3 === 0 ) {
+        valorSuma += numeros[i];
+    }
+}
+return valorSuma;
+};
+
+function encontrarPares(numeros) {
+    var pares = [];
+    for (let i=0; i<numeros.length; i++) {
+        if (numeros[i] % 2 === 0 ) {
+            pares.push(numeros[i]);
+    }
+}
+return pares;
+}
+var pares = encontrarPares(numeros);
+
+function encontrarImpares(numeros) {
+    var impares = [];
+    for (let i=0; i<numeros.length; i++) {
+        if (numeros[i] % 2 === 1 ) {
+            impares.push(numeros[i]);
+    }
+}
+return impares;
+}
+var impares = encontrarImpares(numeros);
+
 
 /*
     3. Crear un array con cada elemento teniendo el par [alumno, nota]
@@ -39,6 +101,42 @@
         6.2. Crear métodos del objeto que permita modificar las notas.
 */
 
+const notas = {
+        html: 8,
+        css: 9,
+        javascript: 10,
+        promedio: function () {
+            return (this.html + this.css + this.javascript) / 3;
+        },
+        cambioNotaHTML: function (nuevaNota) {
+            this.html = nuevaNota;
+        },
+        cambioNotaCSS: function (nuevaNota) {
+            this.css = nuevaNota;
+        },
+        cambioNotaJavascript: function (nuevaNota) {
+            this.javascript = nuevaNota;
+        }
+}
+
+/* function calcularPromedio() {
+        const totalNotas = notas.html + notas.css + notas.javascript;
+        const cantidadCursos = 3;
+        return totalNotas / cantidadCursos;
+};
+
+function modificarNotaHTML(nuevaNota) {
+    notas.html = nuevaNota;
+};
+function modificarNotaCSS(nuevaNota) {
+    notas.css = nuevaNota;
+};
+function modificarNotaJS(nuevaNota) {
+    notas.javascript = nuevaNota;
+};*/
+
+
+
 /*
     7. Definir un objeto que tenga dos propiedades: precio y descuento, y un método neto.
         El método calculará el precio con el descuento aplicado. Los valores se pedirán por teclado.
@@ -54,6 +152,32 @@
         El primero incrementa el saldo en la cantidad indicada en el argumento y el segundo lo reduce.
         No se puede retirar más de lo que exista en el saldo.
 */
+
+function Cuenta (nombreTitular, saldoInicial) {
+    this.nombre = nombreTitular;
+    this.saldo = saldoInicial;
+    this.ingresar = function(cantidad) {
+        this.saldo += cantidad;
+    console.log(`Has ingresado ${cantidad}: saldo actual ${this.saldo}.`);
+    }
+    this.retirar = function(cantidad) {
+        if (cantidad > this.saldo) {
+            cantidad -= this.saldo;
+            console.log(`Puedes retirar solo hasta lo que tienes en tu saldo: ${this.saldo}`);
+            this.saldo = 0;
+            console.log(`No pudiste retirar: ${cantidad}`);
+        } else if (cantidad > 0) {
+            this.saldo -= cantidad;
+            console.log(`Has retirado ${cantidad}: saldo actual: ${this.saldo}`);
+        } else {
+            console.log("La cantidad a retirar debe ser positiva.");
+        }
+        }
+    }
+
+const Erik = new Cuenta ("Erik", 1200);
+
+
 
 /*
     9. Crear una función constructora llamada Bus.
