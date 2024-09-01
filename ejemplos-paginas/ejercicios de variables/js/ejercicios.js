@@ -129,6 +129,24 @@ function intercambiarEquipos(ocupados, libres) {
             y ponerlo en la lista de pendientes.
 */
 
+let compras = [
+    ["pan", true],
+    ["leche", false],
+    ["huevos", true],
+    ["arroz", false],
+    ["manzanas", false]
+];
+
+let pendientes = [];
+
+function moverPendientes(compras, pendientes) {
+    for (let i = 0; i < compras.length; i++) {
+        if(!compras[i][1]) {
+            pendientes.push(compras[i][0]);
+        }
+    }
+}
+
 /*
     6. Crear un objeto que almacene las notas de un alumno en tres cursos: html, css y javascript
         6.1. Crear una función que devuelva la nota promedio del alumno.
