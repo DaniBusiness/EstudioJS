@@ -197,6 +197,18 @@ function modificarNotaJS(nuevaNota) {
     > La función parseInt(text) convierte text a number
 */
 
+let servicio = {
+    precio: 0,
+    descuento: 0,
+    neto: function () {
+        let precioConDescuento = this.precio - (this.precio * this.descuento / 100);
+        return precioConDescuento;
+    }
+}
+
+servicio.precio = parseInt(prompt("Introduce el precio del producto:"));
+servicio.descuento = parseInt(prompt("Introduce el descuento (%):"));
+
 /*
     8. Crear una función constructora para implementar una cuenta de efectivo.
         Poseerá dos propiedades: nombre del titular y saldo.
