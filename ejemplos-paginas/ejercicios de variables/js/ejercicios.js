@@ -258,3 +258,41 @@ const Erik = new Cuenta ("Erik", 1200);
         Si se quieren subir más pasajeros de lo permitido, sólo subirán los necesarios para llenar el bus.
         Por el contrario, sólo se podrán bajar máximo la cantidad de pasajeros que haya en el bus.
 */
+
+function Bus(capacidad) {
+    // Atributos del objeto
+    this.capacidad = capacidad;  // Capacidad máxima de pasajeros
+    this.pasajeros = 0;          // Número inicial de pasajeros, comienza en 0
+
+    // Método para subir pasajeros
+    this.subir = function(numPasajeros) {
+        if (this.pasajeros + numPasajeros > this.capacidad) {
+            // Si el número de pasajeros que se quiere subir excede la capacidad
+            let pasajerosQuePuedenSubir = this.capacidad - this.pasajeros;
+            this.pasajeros += pasajerosQuePuedenSubir;
+            console.log(`El bus se ha llenado. Solo pudieron subir ${pasajerosQuePuedenSubir} pasajeros.`);
+        } else {
+            // Si no se excede la capacidad, todos los pasajeros suben
+            this.pasajeros += numPasajeros;
+            console.log(`${numPasajeros} pasajeros han subido al bus.`);
+        }
+        console.log(`Ahora hay ${this.pasajeros} pasajeros en el bus.`);
+    };
+
+    // Método para bajar pasajeros
+    this.bajar = function(numPasajeros) {
+        if (this.pasajeros - numPasajeros < 0) {
+            // Si se quieren bajar más pasajeros de los que hay en el bus
+            let pasajerosQuePuedenBajar = this.pasajeros;
+            this.pasajeros = 0;
+            console.log(`Solo ${pasajerosQuePuedenBajar} pasajeros pudieron bajar.`);
+        } else {
+            // Si hay suficientes pasajeros para bajar
+            this.pasajeros -= numPasajeros;
+            console.log(`${numPasajeros} pasajeros han bajado del bus.`);
+        }
+        console.log(`Ahora hay ${this.pasajeros} pasajeros en el bus.`);
+    };
+}
+
+let miBus = new Bus(40);
