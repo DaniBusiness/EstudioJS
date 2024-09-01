@@ -82,6 +82,30 @@ var impares = encontrarImpares(numeros);
         3.2. Devolver un array con los alumnos que aprueban (nota > 6). Sólo los alumnos, sin la nota.
 */
 
+let alumnosNotas = [
+    ["Juan", 8],
+    ["Ana", 5],
+    ["Carlos", 7],
+    ["Lucía", 9],
+    ["Miguel", 4],
+    ["Sofía", 10],
+    ["María", 6]
+];
+
+function ordenarPorNota(alumnosNotas) {
+    return alumnosNotas.sort((a, b) => b[1] - a[1]);
+}
+
+function obtenerAlumnosAprobados(alumnosNotas) {
+    let alumnosAprobados = [];
+    for (let i = 0; i < alumnosNotas.length; i++) {
+        if (alumnosNotas[i][1] > 6) {
+            alumnosAprobados.push(alumnosNotas[i][0]);
+        }
+    }
+    return alumnosAprobados;
+}
+
 /*
     4. Crear dos arrays para representar dos equipos de trabajo, uno de ocupados y al otro de libres.
         4.1. Crear una función que tome el primer elemento de cada array y lo ponga en último lugar del otro array
