@@ -113,6 +113,16 @@ function obtenerAlumnosAprobados(alumnosNotas) {
             al ejecutar la función: ocupados = [daniel, maria, mateo]; libres = [lucia, julia, luis];
 */
 
+let ocupados = ['luis', 'daniel', 'maria'];
+let libres = ['mateo', 'lucia', 'julia'];
+
+function intercambiarEquipos(ocupados, libres) {
+    let primerOcupado = ocupados.shift();
+    let primerLibre = libres.shift();
+    ocupados.push(primerLibre);
+    libres.push(primerOcupado);
+}
+
 /*
     5. Crear dos listas, una de compras (que tendrá a su vez parejas de valores [producto, estado]) y otra de pendientes
         5.1. Crear una función que tome cada producto de la lista NO está comprado (estado = false),
