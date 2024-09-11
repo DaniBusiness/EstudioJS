@@ -97,11 +97,33 @@ let alumnosNotas = [
     return b[1] - a[1];
 } */
 
-function ordenarPorNota(alumnosNotas) {
+//function ordenarPorNota(alumnosNotas) {
     // return alumnosNotas.sort(compararNotas);
-    return alumnosNotas.sort((a, b) => a[1] - b[1]);
-}
+    //return alumnosNotas.sort((a, b) => a[1] - b[1]);
+//}
 
+function OrdPorNota(alumnosNotas) {
+    let n = alumnosNotas.length;
+    let intercambiado;
+
+    do {
+        intercambiado = false;
+        console.log(alumnosNotas);
+        // Recorremos el array de 0 a n-1
+        for (let i = 0; i < n - 1; i++) {
+            // Si la nota actual es menor que la siguiente, las intercambiamos
+            if (alumnosNotas[i][1] < alumnosNotas[i + 1][1]) {
+                let temp = alumnosNotas[i];
+                alumnosNotas[i] = alumnosNotas[i + 1];
+                alumnosNotas[i + 1] = temp;
+                intercambiado = true; // Indicamos que hubo un intercambio
+            }
+        }
+        n--; // Reducimos el rango de comparación ya que el mayor elemento ya está al final
+    } while (intercambiado);
+
+    return alumnosNotas;
+}
 
 function obtenerAlumnosAprobados(alumnosNotas) {
     let alumnosAprobados = [];
