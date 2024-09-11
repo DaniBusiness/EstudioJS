@@ -92,9 +92,16 @@ let alumnosNotas = [
     ["María", 6]
 ];
 
+/* function compararNotas(a, b) {
+    console.log('b-a: ', b[1], '-', a[1], '=', b[1]-a[1]);
+    return b[1] - a[1];
+} */
+
 function ordenarPorNota(alumnosNotas) {
-    return alumnosNotas.sort((a, b) => b[1] - a[1]);
+    // return alumnosNotas.sort(compararNotas);
+    return alumnosNotas.sort((a, b) => a[1] - b[1]);
 }
+
 
 function obtenerAlumnosAprobados(alumnosNotas) {
     let alumnosAprobados = [];
@@ -206,8 +213,8 @@ let servicio = {
     }
 }
 
-servicio.precio = parseInt(prompt("Introduce el precio del producto:"));
-servicio.descuento = parseInt(prompt("Introduce el descuento (%):"));
+// servicio.precio = parseInt(prompt("Introduce el precio del producto:"));
+// servicio.descuento = parseInt(prompt("Introduce el descuento (%):"));
 
 /*
     8. Crear una función constructora para implementar una cuenta de efectivo.

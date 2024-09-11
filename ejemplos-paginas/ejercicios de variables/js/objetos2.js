@@ -387,13 +387,24 @@ const amarok = new Auto('Volkswagen', 'Amarok', '1150 kg', 2022);
 const ds3 = new Auto('Citröen', 'DS3', '750 kg', 2014);
 const sprinter = new Auto('Mercedes Benz', 'eSprinter', '3500 kg', 2024);
 
+
+// Agregar propiedades o métodos a una clase-función constructora
 Auto.prototype.type = 'electric';
 Auto.prototype.drive = function () {
     return this.model + ' está avanzando.';
 }
 Auto.prototype.changeType = function (_type) {
     this.type = _type;
+};
+
+// Agregar propiedades o métodos a un objeto creado
+amarok.propietario = 'Daniele';
+amarok.detener = function() {
+    console.log(this.model + " del año " + this.year + " se ha detenido");
+    return this.model + " se ha detenido";
 }
+
+
 
 /*
     NOTA: si se agregan nuevas propiedades o métodos a estos objetos ya creados,
